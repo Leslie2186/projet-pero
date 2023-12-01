@@ -1,0 +1,25 @@
+.containOneCity img {
+  width: 50%;
+  height: auto;
+  border-radius: 10px;
+}
+
+.containerInfos {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: left;
+}
+
+.infos {
+  margin-right: 50px;
+}
+
+.monuments h4 {
+  text-align: center;
+  text-decoration: underline;
+}
+
+.monuments li {
+  list-style-type: none;
+}
