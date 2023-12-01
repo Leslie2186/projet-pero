@@ -1,0 +1,19 @@
+.containCity {
+  border: 1px solid black;
+  border-radius: 10px;
+  box-shadow: -5px 10px 5px gray;
+  padding: 10px;
+  margin-bottom: 30px;
+  margin-right: 20px;
+}
+
+.containCity img {
+  width: auto;
+  height: 200px;
+  border-radius: 10px;
+}
+
+.containCity a {
+  text-decoration: none;
+  color: black;
+}

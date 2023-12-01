@@ -9,14 +9,14 @@ const router = express.Router();
 // Import itemControllers module for handling item-related operations
 const itemControllers = require("./controllers/itemControllers");
 
-// Route to get a list of items
-router.get("/items", itemControllers.browse);
+// Route to get a list of cities
+router.get("/cities", itemControllers.browseCities);
 
-// Route to get a specific item by ID
-router.get("/items/:id", itemControllers.read);
+// Route to get a specific city by ID
+router.get("/cities/:id", itemControllers.read);
 
-// Route to add a new item
-router.post("/items", itemControllers.add);
+// Route to add a new city
+router.post("/cities", itemControllers.add);
 
 /* ************************************************************************* */
 
