@@ -1,14 +1,26 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-
+import axios from "axios";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import Cities from "./pages/cities/Cities";
 
 import App from "./App";
 
 const router = createBrowserRouter([
   {
-    path: "/",
     element: <App />,
+    children: [
+      {
+        path: "/",
+        element: <Cities />,
+        loader: () => {
+          return axios
+            .get(`${import.meta.env.VITE_BACKEND_URL}/api/cities`)
+            .then((response) => response.data)
+            .catch((err) => console.error(err));
+        },
+      },
+    ],
   },
 ]);
 
