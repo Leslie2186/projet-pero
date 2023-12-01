@@ -1,37 +1,75 @@
 // Import access to database tables
+const client = require("../../database/client");
 const tables = require("../tables");
 
 // The B of BREAD - Browse (Read All) operation
+/*
 const browse = async (req, res, next) => {
   try {
     // Fetch all items from the database
-    const items = await tables.item.readAll();
+    const cities = await tables.cities.readAll();
 
     // Respond with the items in JSON format
-    res.json(items);
+    res.json(cities);
   } catch (err) {
     // Pass any errors to the error-handling middleware
     next(err);
   }
 };
+*/
+
+const browseCities = (req, res) => {
+  const query =
+    "SELECT cities.id AS citiesId, countries.id AS countriesId, countries_id, city, picture, country, flag FROM cities INNER JOIN countries ON cities.countries_id = countries.id";
+  client
+    .query(query)
+    .then((result) => res.status(200).json(result[0]))
+    .catch((error) => {
+      console.error(error);
+      res.sendStatus(500);
+    });
+};
 
 // The R of BREAD - Read operation
+/*
 const read = async (req, res, next) => {
   try {
     // Fetch a specific item from the database based on the provided ID
-    const item = await tables.item.read(req.params.id);
+    const city = await tables.cities.read(req.params.id);
 
     // If the item is not found, respond with HTTP 404 (Not Found)
     // Otherwise, respond with the item in JSON format
-    if (item == null) {
+    if (city == null) {
       res.sendStatus(404);
     } else {
-      res.json(item);
+      res.json(city);
     }
   } catch (err) {
     // Pass any errors to the error-handling middleware
     next(err);
   }
+};
+*/
+
+const read = (req, res) => {
+  const id = +req.params.id;
+
+  client
+    .query(
+      "SELECT cities.id AS citiesId, countries.id AS countriesId, countries_id, city, cash, picture, sunshine, monuments0, monuments1, monuments2, monuments3, monuments4, monuments5, monuments6, country, flag, language FROM cities INNER JOIN countries ON cities.countries_id = countries.id WHERE cities.id = ?",
+      [id]
+    )
+    .then(([city]) => {
+      if (city[0] != null) {
+        res.status(200).json(city[0]);
+      } else {
+        res.sendStatus(404);
+      }
+    })
+    .catch((error) => {
+      console.error(error);
+      res.sendStatus(500);
+    });
 };
 
 // The E of BREAD - Edit (Update) operation
@@ -59,7 +97,7 @@ const add = async (req, res, next) => {
 
 // Ready to export the controller functions
 module.exports = {
-  browse,
+  browseCities,
   read,
   // edit,
   add,
