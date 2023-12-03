@@ -8,7 +8,7 @@ function Cities() {
 
   return (
     <div className="citiesList">
-      <h1>Des belles villes pour de belles vacances</h1>
+      <h1>Des belles villes pour des belles vacances</h1>
       <div className="containCities">
         {cities.map((city) => (
           <City key={city.id} city={city} />
