@@ -1,0 +1,9 @@
+.footer {
+  height: 100px;
+  color: black;
+  padding-top: 50px;
+}
+
+.footer p {
+  font-weight: bold;
+}
