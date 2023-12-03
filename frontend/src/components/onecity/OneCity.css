@@ -1,7 +1,40 @@
-.containOneCity img {
-  width: 50%;
+.containerOneCity {
+  display: flex;
+  justify-content: center;
+}
+
+.containOneCity {
+  border: 2.5mm ridge lightseagreen;
+  border-radius: 10px;
+  box-shadow: -7px 10px 5px gray;
+  padding: 10px;
+  margin-top: 100px;
+  margin-bottom: 30px;
+  margin-right: 20px;
+  background-color: white;
+  max-width: 750px;
+}
+
+.imgCity {
+  width: 80%;
   height: auto;
   border-radius: 10px;
+}
+
+.containerTitle {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.containerTitle h2 {
+  color: lightseagreen;
+}
+
+.containerTitle img {
+  width: 50px;
+  height: auto;
+  margin-left: 20px;
+  margin-top: 10px;
 }
 
 .containerInfos {
@@ -13,6 +46,24 @@
 
 .infos {
   margin-right: 50px;
+  margin-left: 10px;
+}
+
+.containSoleil {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.soleil {
+  width: 55px;
+  height: auto;
+  margin-right: 10px;
+}
+
+.monument {
+  width: 20px;
+  height: auto;
+  margin-right: 10px;
 }
 
 .monuments h4 {
@@ -22,4 +73,31 @@
 
 .monuments li {
   list-style-type: none;
+  margin-bottom: 10px;
+}
+
+@media screen and (max-width: 900px) {
+  .containOneCity {
+    margin-left: 15px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .soleil {
+    width: 90px;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .containerInfos {
+    display: block;
+  }
+
+  .infos {
+    text-align: center;
+  }
+
+  .containSoleil {
+    justify-content: center;
+  }
 }
