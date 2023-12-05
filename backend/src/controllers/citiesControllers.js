@@ -19,20 +19,6 @@ const browseCities = async (req, res, next) => {
   }
 };
 
-/*
-const browseCities = (req, res) => {
-  const query =
-    "SELECT cities.id AS citiesId, countries.id AS countriesId, countries_id, city, picture, country, flag FROM cities INNER JOIN countries ON cities.countries_id = countries.id";
-  client
-    .query(query)
-    .then((result) => res.status(200).json(result[0]))
-    .catch((error) => {
-      console.error(error);
-      res.sendStatus(500);
-    });
-};
-*/
-
 // The R of BREAD - Read operation
 
 const readCity = async (req, res, next) => {
@@ -53,41 +39,37 @@ const readCity = async (req, res, next) => {
   }
 };
 
-/*
-const readCity = (req, res) => {
-  const id = +req.params.id;
-
-  client
-    .query(
-      "SELECT cities.id AS citiesId, countries.id AS countriesId, countries_id, city, cash, picture, sunshine, monuments0, monuments1, monuments2, monuments3, monuments4, monuments5, monuments6, country, flag, language FROM cities INNER JOIN countries ON cities.countries_id = countries.id WHERE cities.id = ?",
-      [id]
-    )
-    .then(([city]) => {
-      if (city[0] != null) {
-        res.status(200).json(city[0]);
-      } else {
-        res.sendStatus(404);
-      }
-    })
-    .catch((error) => {
-      console.error(error);
-      res.sendStatus(500);
-    });
-};
-*/
 // The E of BREAD - Edit (Update) operation
 // This operation is not yet implemented
 
 // The A of BREAD - Add (Create) operation
-const add = async (req, res, next) => {
-  // Extract the item data from the request body
-  const item = req.body;
+const addCity = async (req, res, next) => {
+  // Extract the city data from the request body
+  const city = req.body;
 
   try {
-    // Insert the item into the database
-    const insertId = await tables.item.create(item);
+    // Insert the city into the database
+    const insertId = await tables.cities.createCity(city);
 
-    // Respond with HTTP 201 (Created) and the ID of the newly inserted item
+    // Respond with HTTP 201 (Created) and the ID of the newly inserted city
+    res.status(201).json({ insertId });
+  } catch (err) {
+    // Pass any errors to the error-handling middleware
+    next(err);
+  }
+};
+
+// The A of BREAD - Add (Create) operation
+
+const addCountry = async (req, res, next) => {
+  // Extract the country data from the request body
+  const country = req.body;
+
+  try {
+    // Insert the country into the database
+    const insertId = await tables.countries.createCountry(country);
+
+    // Respond with HTTP 201 (Created) and the ID of the newly inserted country
     res.status(201).json({ insertId });
   } catch (err) {
     // Pass any errors to the error-handling middleware
@@ -103,6 +85,8 @@ module.exports = {
   browseCities,
   readCity,
   // edit,
-  add,
+  addCity,
+  addCountry,
+
   // destroy,
 };
