@@ -26,7 +26,7 @@ function Addcountry() {
         countryValue
       );
 
-      if (response.status === 200) {
+      if (response.status === 201) {
         console.info("Données enregistrées avec succès !");
         // Vous pouvez effectuer d'autres actions après la soumission réussie.
       } else {

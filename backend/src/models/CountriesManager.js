@@ -33,17 +33,15 @@ class CountriesManager extends AbstractManager {
     return rows[0];
   }
   */
-  /*
-  async readAll() {
-    // Execute the SQL SELECT query to retrieve all cities from the "cities" table
-    const [rows] = await this.database.query(
-      `SELECT cities.id AS citiesId, countries.id AS countriesId, countries_id, city, picture, country, flag FROM ${this.table} INNER JOIN countries ON ${this.table}.countries_id = countries.id`
-    );
 
-    // Return the array of cities
+  async readAll() {
+    // Execute the SQL SELECT query to retrieve all countries from the "countries" table
+    const [rows] = await this.database.query(`SELECT * FROM ${this.table}`);
+
+    // Return the array of countries
     return rows;
   }
-*/
+
   // The U of CRUD - Update operation
   // TODO: Implement the update operation to modify an existing item
 

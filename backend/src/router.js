@@ -11,11 +11,15 @@ const router = express.Router();
 const itemControllers = require("./controllers/itemControllers");
 */
 const citiesControllers = require("./controllers/citiesControllers");
+const countriesControllers = require("./controllers/countriesControllers");
 const validateCities = require("./middlewares/validateCities");
 const validateCountries = require("./middlewares/validateCountries");
 
 // Route to get a list of cities
 router.get("/cities", citiesControllers.browseCities);
+
+// Route to get a list of countries
+router.get("/countries", countriesControllers.browseCountries);
 
 // Route to get a specific city by ID
 router.get("/cities/:id", citiesControllers.readCity);
@@ -24,7 +28,7 @@ router.get("/cities/:id", citiesControllers.readCity);
 router.post("/cities", validateCities, citiesControllers.addCity);
 
 // Route to add a new country
-router.post("/countries", validateCountries, citiesControllers.addCountry);
+router.post("/countries", validateCountries, countriesControllers.addCountry);
 
 /* ************************************************************************* */
 
