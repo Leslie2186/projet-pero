@@ -1,8 +1,9 @@
-import { React, useState } from "react";
+import { React, useEffect, useState } from "react";
 import "./Addcity.css";
 import axios from "axios";
 
 function Addcity() {
+  const [countries, setCountries] = useState();
   const [cityValue, setCityValue] = useState({
     city: "",
     countries_id: 0,
@@ -34,9 +35,8 @@ function Addcity() {
         cityValue
       );
 
-      if (response.status === 200) {
+      if (response.status === 201) {
         console.info("Données enregistrées avec succès !");
-        // Vous pouvez effectuer d'autres actions après la soumission réussie.
       } else {
         console.error(
           "Erreur lors de la soumission des données :",
@@ -50,6 +50,21 @@ function Addcity() {
       );
     }
   };
+
+  const getCountries = async () => {
+    try {
+      const myCountries = await axios
+        .get(`${import.meta.env.VITE_BACKEND_URL}/api/countries`)
+        .then((res) => res.data);
+      setCountries(myCountries);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  useEffect(() => {
+    getCountries();
+  }, []);
 
   return (
     <div className="formulairePostCity">
@@ -75,12 +90,12 @@ function Addcity() {
               required
             >
               <option value={0}>Choisir une option</option>
-              <option value={1}>Irlande du sud / République d'Irlande</option>
-              <option value={2}>Italie</option>
-              <option value={3}>Espagne</option>
-              <option value={4}>France</option>
-              <option value={5}>Sicile</option>
-              <option value={6}>Croatie</option>
+              {countries &&
+                countries.map((country) => (
+                  <option key={country.id} value={country.id}>
+                    {country.country}
+                  </option>
+                ))}
             </select>
           </label>
           <label>
