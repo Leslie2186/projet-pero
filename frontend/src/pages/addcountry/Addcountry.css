@@ -1,0 +1,31 @@
+.formulairePostCountry h1 {
+  margin-bottom: 50px;
+}
+
+.containerFormCountry {
+  display: flex;
+  justify-content: center;
+}
+
+.formCountries {
+  border: 1px solid black;
+  border-radius: 10px;
+  padding: 20px;
+  display: grid;
+  grid-template-columns: 1fr;
+  text-align: left;
+  width: 430px;
+}
+
+.formCountries label {
+  margin-bottom: 10px;
+}
+
+.buttonSubmit {
+  border-radius: 5px;
+  padding: 5px;
+  background-color: white;
+  color: lightseagreen;
+  font-weight: bold;
+  border: 2px solid lightseagreen;
+}

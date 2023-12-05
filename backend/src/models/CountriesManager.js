@@ -1,40 +1,27 @@
 const AbstractManager = require("./AbstractManager");
 
-class CitiesManager extends AbstractManager {
+class CountriesManager extends AbstractManager {
   constructor() {
     // Call the constructor of the parent class (AbstractManager)
     // and pass the table name "cities" as configuration
-    super({ table: "cities" });
+    super({ table: "countries" });
   }
 
   // The C of CRUD - Create operation
 
-  async createCity(city) {
-    // Execute the SQL INSERT query to add a new city to the "cities" table
+  async createCountry(country) {
+    // Execute the SQL INSERT query to add a new country to the "countries" table
     const [result] = await this.database.query(
-      `insert into ${this.table} (city, countries_id, cash, picture, sunshine, monuments0, monuments1, monuments2, monuments3, monuments4, monuments5, monuments6) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
-      [
-        city.city,
-        city.countries_id,
-        city.cash,
-        city.picture,
-        city.sunshine,
-        city.monuments0,
-        city.monuments1,
-        city.monuments2,
-        city.monuments3,
-        city.monuments4,
-        city.monuments5,
-        city.monuments6,
-      ]
+      `insert into ${this.table} (country, flag, language) values (?, ?, ?)`,
+      [country.country, country.flag, country.language]
     );
 
-    // Return the ID of the newly inserted city
+    // Return the ID of the newly inserted country
     return result.insertId;
   }
 
   // The Rs of CRUD - Read operations
-
+  /*
   async read(id) {
     // Execute the SQL SELECT query to retrieve a specific cities by its ID
     const [rows] = await this.database.query(
@@ -45,7 +32,8 @@ class CitiesManager extends AbstractManager {
     // Return the first row of the result, which represents the item
     return rows[0];
   }
-
+  */
+  /*
   async readAll() {
     // Execute the SQL SELECT query to retrieve all cities from the "cities" table
     const [rows] = await this.database.query(
@@ -55,7 +43,7 @@ class CitiesManager extends AbstractManager {
     // Return the array of cities
     return rows;
   }
-
+*/
   // The U of CRUD - Update operation
   // TODO: Implement the update operation to modify an existing item
 
@@ -71,4 +59,4 @@ class CitiesManager extends AbstractManager {
   // }
 }
 
-module.exports = CitiesManager;
+module.exports = CountriesManager;
