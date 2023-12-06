@@ -25,18 +25,25 @@ function Modifcities() {
       const myCities = await axios
         .get(`${import.meta.env.VITE_BACKEND_URL}/api/cities`)
         .then((res) => res.data);
+      console.info(myCities);
       setCities(myCities);
     } catch (error) {
       console.error(error);
     }
   };
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setCityValue((prevData) => ({
-      ...prevData,
-      [name]: value,
-    }));
+  const handleChange = (event) => {
+    if (event.target.name === "countries_id") {
+      setCityValue((previousState) => ({
+        ...previousState,
+        [event.target.name]: +event.target.value,
+      }));
+    } else {
+      setCityValue((previousState) => ({
+        ...previousState,
+        [event.target.name]: event.target.value,
+      }));
+    }
   };
 
   const handleSubmit = async (e) => {
@@ -60,6 +67,19 @@ function Modifcities() {
         "Erreur lors de la soumission des données :",
         error.message
       );
+    }
+  };
+
+  const putCity = async (event) => {
+    event.preventDefault();
+    try {
+      await axios.put(
+        `${import.meta.env.VITE_BACKEND_URL}/api/cities/${cityValue.citiesId}`,
+        cityValue
+      );
+      getCities();
+    } catch (error) {
+      console.error(error);
     }
   };
 
@@ -89,12 +109,24 @@ function Modifcities() {
     }
   };
 
+  const loadCity = async (city) => {
+    setCityValue(city);
+  };
+
+  const handleRequest = (event) => {
+    if (cityValue.citiesId) {
+      putCity(event);
+    } else {
+      handleSubmit(event);
+    }
+  };
+
   return (
     <div className="dashboard">
       <div className="formulairePostCity">
         <h1>Ajouter une nouvelle ville</h1>
         <div className="containerFormCity">
-          <form onSubmit={handleSubmit} className="formCities">
+          <form onSubmit={handleRequest} className="formCities">
             <label>
               Nouvelle ville visitée :{" "}
               <input
@@ -223,7 +255,9 @@ function Modifcities() {
               />
             </label>
             <div className="containSubmit">
-              <input type="submit" value="Submit" className="buttonSubmit" />
+              <button type="submit" className="buttonSubmit">
+                {cityValue.citiesId ? "Modifier" : "Ajouter"}
+              </button>
             </div>
           </form>
         </div>
@@ -234,7 +268,17 @@ function Modifcities() {
             <thead>
               <th>id</th>
               <th>City</th>
+              <th>Country</th>
+              <th>Flag</th>
               <th>Picture</th>
+              <th>sunshine</th>
+              <th>monuments1</th>
+              <th>monuments2</th>
+              <th>monuments3</th>
+              <th>monuments4</th>
+              <th>monuments5</th>
+              <th>monuments6</th>
+              <th>monuments7</th>
             </thead>
             <tbody>
               {cities.map((city) => {
@@ -242,9 +286,19 @@ function Modifcities() {
                   <tr key={city.citiesId}>
                     <td>{city.citiesId}</td>
                     <td>{city.city}</td>
+                    <td>{city.countries_id}</td>
+                    <td>{city.flag}</td>
                     <td>
                       <img src={city.picture} alt={city.city} />
                     </td>
+                    <td>{city.sunshine}</td>
+                    <td>{city.monuments0}</td>
+                    <td>{city.monuments1}</td>
+                    <td>{city.monuments2}</td>
+                    <td>{city.monuments3}</td>
+                    <td>{city.monuments4}</td>
+                    <td>{city.monuments5}</td>
+                    <td>{city.monuments6}</td>
                     <td>
                       <button
                         type="button"
@@ -252,6 +306,15 @@ function Modifcities() {
                         className="buttonSuppression"
                       >
                         Supprimer
+                      </button>
+                    </td>
+                    <td>
+                      <button
+                        type="button"
+                        onClick={() => loadCity(city)}
+                        className="buttonModif"
+                      >
+                        Modifier
                       </button>
                     </td>
                   </tr>

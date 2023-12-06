@@ -42,14 +42,14 @@ const updateCity = async (req, res, next) => {
 
   try {
     // Fetch a specific city from the database based on the provided ID
-    const city = await tables.cities.update(req.params.id, putCity);
+    const result = await tables.cities.update(req.params.id, putCity);
 
     // If the item is not found, respond with HTTP 404 (Not Found)
     // Otherwise, respond with the city in JSON format
-    if (city == null) {
-      res.sendStatus(404);
+    if (result.affectedRows === 1) {
+      res.sendStatus(204);
     } else {
-      res.json(city);
+      res.sendStatus(404);
     }
   } catch (err) {
     // Pass any errors to the error-handling middleware

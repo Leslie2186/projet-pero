@@ -33,16 +33,6 @@
   justify-content: center;
 }
 
-.buttonSubmit {
-  border-radius: 5px;
-  padding: 5px;
-  background-color: white;
-  color: lightseagreen;
-  font-weight: bold;
-  border: 2px solid lightseagreen;
-  margin-top: 20px;
-}
-
 .tableDashboard table,
 th,
 td {
@@ -57,7 +47,8 @@ td {
 }
 
 .buttonSuppression,
-.buttonModif {
+.buttonModif,
+.buttonSubmit {
   width: 100px;
   height: auto;
   font-size: 13px;
