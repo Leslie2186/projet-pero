@@ -72,14 +72,10 @@ function OneCity() {
                 <img src={monument} alt="Monument5" className="monument" />
                 {city.monuments5}
               </li>
-              <li>
-                <img src={monument} alt="Monument6" className="monument" />
-                {city.monuments6}
-              </li>
-              {city.monuments7 ? (
+              {city.monuments6 ? (
                 <li>
-                  <img src={monument} alt="Monument7" className="monument" />
-                  {city.monuments7}
+                  <img src={monument} alt="Monument6" className="monument" />
+                  {city.monuments6}
                 </li>
               ) : null}
             </ul>

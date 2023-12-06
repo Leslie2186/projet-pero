@@ -37,6 +37,25 @@ const readCity = async (req, res, next) => {
 
 // The E of BREAD - Edit (Update) operation
 // This operation is not yet implemented
+const updateCity = async (req, res, next) => {
+  const putCity = req.body;
+
+  try {
+    // Fetch a specific city from the database based on the provided ID
+    const city = await tables.cities.update(req.params.id, putCity);
+
+    // If the item is not found, respond with HTTP 404 (Not Found)
+    // Otherwise, respond with the city in JSON format
+    if (city == null) {
+      res.sendStatus(404);
+    } else {
+      res.json(city);
+    }
+  } catch (err) {
+    // Pass any errors to the error-handling middleware
+    next(err);
+  }
+};
 
 // The A of BREAD - Add (Create) operation
 const addCity = async (req, res, next) => {
@@ -57,12 +76,21 @@ const addCity = async (req, res, next) => {
 
 // The D of BREAD - Destroy (Delete) operation
 // This operation is not yet implemented
+const deleteCity = async (req, res, next) => {
+  try {
+    await tables.cities.delete(req.params.id);
+    res.sendStatus(204);
+  } catch (err) {
+    // Pass any errors to the error-handling middleware
+    next(err);
+  }
+};
 
 // Ready to export the controller functions
 module.exports = {
   browseCities,
   readCity,
-  // edit,
+  updateCity,
   addCity,
-  // destroy,
+  deleteCity,
 };

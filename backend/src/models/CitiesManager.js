@@ -58,17 +58,43 @@ class CitiesManager extends AbstractManager {
 
   // The U of CRUD - Update operation
   // TODO: Implement the update operation to modify an existing item
+  async update(id, putCity) {
+    // Execute the SQL SELECT query to retrieve a specific cities by its ID
+    const [rows] = await this.database.query(
+      `UPDATE ${this.table} set city = ?, countries_id = ?, cash = ?, picture = ?, sunshine = ?, monuments0 = ?, monuments1 = ?, monuments2 = ?, monuments3 = ?, monuments4 = ?, monuments5 = ?, monuments6 = ? WHERE id = ?`,
+      [
+        putCity.city,
+        putCity.countries_id,
+        putCity.cash,
+        putCity.picture,
+        putCity.sunshine,
+        putCity.monuments0,
+        putCity.monuments1,
+        putCity.monuments2,
+        putCity.monuments3,
+        putCity.monuments4,
+        putCity.monuments5,
+        putCity.monuments6,
+        id,
+      ]
+    );
 
-  // async update(item) {
-  //   ...
-  // }
+    // Return the first row of the result, which represents the item
+    return rows[0];
+  }
 
   // The D of CRUD - Delete operation
-  // TODO: Implement the delete operation to remove an item by its ID
+  // TODO: Implement the delete operation to remove a city by its ID
 
-  // async delete(id) {
-  //   ...
-  // }
+  async delete(id) {
+    const result = await this.database.query(
+      `DELETE FROM ${this.table} WHERE id = ?`,
+      [id]
+    );
+
+    // Return the first row of the result, which represents the city
+    return result;
+  }
 }
 
 module.exports = CitiesManager;
