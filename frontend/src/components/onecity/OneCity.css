@@ -76,15 +76,24 @@
   margin-bottom: 10px;
 }
 
-.buttonSuppression {
+.containButtons {
+  margin-top: 30px;
+  margin-bottom: 30px;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.buttonSuppression,
+.buttonModif {
   width: 100px;
   height: auto;
   font-size: 15px;
   color: lightseagreen;
   border: 2px solid lightseagreen;
   border-radius: 5px;
-  margin-top: 30px;
-  margin-bottom: 30px;
+  margin-top: 15px;
+  margin-right: 10px;
 }
 
 @media screen and (max-width: 900px) {

@@ -27,7 +27,6 @@ function OneCity() {
   }
 
   function deleteCities(id) {
-    console.info(id);
     try {
       const response = axios.delete(
         `${import.meta.env.VITE_BACKEND_URL}/api/cities/${id}`
@@ -68,13 +67,22 @@ function OneCity() {
               <img src={soleil} alt="Soleil" className="soleil" />
               <p>h/an : {city.sunshine} </p>
             </div>
-            <button
-              type="button"
-              className="buttonSuppression"
-              onClick={deleteCities(city.id)}
-            >
-              Supprimer
-            </button>
+            <div className="containButtons">
+              <button
+                type="button"
+                className="buttonSuppression"
+                onClick={deleteCities(city.id)}
+              >
+                Supprimer
+              </button>
+              <button
+                type="button"
+                className="buttonModif"
+                onClick={deleteCities(city.id)}
+              >
+                Modifier
+              </button>
+            </div>
           </div>
           <div className="monuments">
             <h4>LES VISITES A FAIRE : </h4>

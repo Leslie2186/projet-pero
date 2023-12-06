@@ -17,22 +17,21 @@ const validateCountries = require("./middlewares/validateCountries");
 
 // Route to get a list of cities
 router.get("/cities", citiesControllers.browseCities);
-
 // Route to get a list of countries
 router.get("/countries", countriesControllers.browseCountries);
 
 // Route to get a specific city by ID
 router.get("/cities/:id", citiesControllers.readCity);
+// Route to get a specific country by ID
+router.get("/countries/:id", countriesControllers.readCountry);
 
 // Route to add a new city
 router.post("/cities", validateCities, citiesControllers.addCity);
-
 // Route to add a new country
 router.post("/countries", validateCountries, countriesControllers.addCountry);
 
 // Route to update a city
 router.put("/cities/:id", validateCities, citiesControllers.updateCity);
-
 // Route to update a country
 router.put(
   "/countries/:id",
@@ -42,6 +41,8 @@ router.put(
 
 // Route to delete a specific city by ID
 router.delete("/cities/:id", citiesControllers.deleteCity);
+// Route to delete a specific country by ID
+router.delete("/countries/:id", countriesControllers.deleteCountry);
 
 /* ************************************************************************* */
 
