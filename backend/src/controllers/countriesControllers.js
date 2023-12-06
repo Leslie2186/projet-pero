@@ -33,14 +33,33 @@ const addCountry = async (req, res, next) => {
   }
 };
 
+const updateCountry = async (req, res, next) => {
+  const putCountry = req.body;
+
+  try {
+    // Fetch a specific city from the database based on the provided ID
+    const country = await tables.countries.update(req.params.id, putCountry);
+
+    // If the item is not found, respond with HTTP 404 (Not Found)
+    // Otherwise, respond with the city in JSON format
+    if (country == null) {
+      res.sendStatus(404);
+    } else {
+      res.json(country);
+    }
+  } catch (err) {
+    // Pass any errors to the error-handling middleware
+    next(err);
+  }
+};
+
 // The D of BREAD - Destroy (Delete) operation
 // This operation is not yet implemented
 
 // Ready to export the controller functions
 module.exports = {
   browseCountries,
-  // edit,
+  updateCountry,
   addCountry,
-
   // destroy,
 };

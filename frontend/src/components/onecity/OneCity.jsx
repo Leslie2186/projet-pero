@@ -1,5 +1,6 @@
 import React from "react";
 import { useLoaderData } from "react-router-dom";
+import axios from "axios";
 import "./OneCity.css";
 import soleil from "../../assets/soleil.png";
 import monument from "../../assets/monuments.png";
@@ -25,6 +26,29 @@ function OneCity() {
     pays = espagne;
   }
 
+  function deleteCities(id) {
+    console.info(id);
+    try {
+      const response = axios.delete(
+        `${import.meta.env.VITE_BACKEND_URL}/api/cities/${id}`
+      );
+
+      if (response.status === 204) {
+        console.info("Données supprimées avec succès !");
+      } else {
+        console.error(
+          "Erreur lors de la suppression des données :",
+          response.statusText
+        );
+      }
+    } catch (error) {
+      console.error(
+        "Erreur lors de la supression des données :",
+        error.message
+      );
+    }
+  }
+
   return (
     <div className="containerOneCity">
       <div className="containOneCity">
@@ -44,6 +68,13 @@ function OneCity() {
               <img src={soleil} alt="Soleil" className="soleil" />
               <p>h/an : {city.sunshine} </p>
             </div>
+            <button
+              type="button"
+              className="buttonSuppression"
+              onClick={deleteCities(city.id)}
+            >
+              Supprimer
+            </button>
           </div>
           <div className="monuments">
             <h4>LES VISITES A FAIRE : </h4>
@@ -72,14 +103,10 @@ function OneCity() {
                 <img src={monument} alt="Monument5" className="monument" />
                 {city.monuments5}
               </li>
-              <li>
-                <img src={monument} alt="Monument6" className="monument" />
-                {city.monuments6}
-              </li>
-              {city.monuments7 ? (
+              {city.monuments6 ? (
                 <li>
-                  <img src={monument} alt="Monument7" className="monument" />
-                  {city.monuments7}
+                  <img src={monument} alt="Monument6" className="monument" />
+                  {city.monuments6}
                 </li>
               ) : null}
             </ul>

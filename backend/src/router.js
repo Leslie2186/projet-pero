@@ -30,6 +30,19 @@ router.post("/cities", validateCities, citiesControllers.addCity);
 // Route to add a new country
 router.post("/countries", validateCountries, countriesControllers.addCountry);
 
+// Route to update a city
+router.put("/cities/:id", validateCities, citiesControllers.updateCity);
+
+// Route to update a country
+router.put(
+  "/countries/:id",
+  validateCountries,
+  countriesControllers.updateCountry
+);
+
+// Route to delete a specific city by ID
+router.delete("/cities/:id", citiesControllers.deleteCity);
+
 /* ************************************************************************* */
 
 module.exports = router;

@@ -44,10 +44,16 @@ class CountriesManager extends AbstractManager {
 
   // The U of CRUD - Update operation
   // TODO: Implement the update operation to modify an existing item
+  async update(id, putCountry) {
+    // Execute the SQL SELECT query to retrieve a specific cities by its ID
+    const [rows] = await this.database.query(
+      `UPDATE ${this.table} SET country = ?, flag = ?, language = ? WHERE id = ?`,
+      [putCountry.country, putCountry.flag, putCountry.language, id]
+    );
 
-  // async update(item) {
-  //   ...
-  // }
+    // Return the first row of the result, which represents the item
+    return rows[0];
+  }
 
   // The D of CRUD - Delete operation
   // TODO: Implement the delete operation to remove an item by its ID
