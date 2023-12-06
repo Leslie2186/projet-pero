@@ -78,15 +78,8 @@ const addCity = async (req, res, next) => {
 // This operation is not yet implemented
 const deleteCity = async (req, res, next) => {
   try {
-    // delete the city into the database
-    const city = await tables.cities.delete(req.params.id);
-
-    /// If the item is not found, respond with HTTP 404 (Not Found)
-    if (city == null) {
-      res.sendStatus(404);
-    } else {
-      res.sendStatus(204);
-    }
+    await tables.cities.delete(req.params.id);
+    res.sendStatus(204);
   } catch (err) {
     // Pass any errors to the error-handling middleware
     next(err);

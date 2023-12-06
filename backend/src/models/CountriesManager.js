@@ -55,6 +55,7 @@ class CountriesManager extends AbstractManager {
 
   // The D of CRUD - Delete operation
   // TODO: Implement the delete operation to remove a country by its ID
+  /*
   async delete(id) {
     const [rows] = await this.database.query(
       `DELETE FROM ${this.table} WHERE ${this.table}.id = ?`,
@@ -64,6 +65,7 @@ class CountriesManager extends AbstractManager {
     // Return the first row of the result, which represents the country
     return rows[0];
   }
+  */
 }
 
 module.exports = CountriesManager;

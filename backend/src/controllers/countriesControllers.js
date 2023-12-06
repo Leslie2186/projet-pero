@@ -75,6 +75,7 @@ const updateCountry = async (req, res, next) => {
 
 // The D of BREAD - Destroy (Delete) operation
 // This operation is not yet implemented
+/*
 const deleteCountry = async (req, res, next) => {
   try {
     // delete the country into the database
@@ -91,6 +92,7 @@ const deleteCountry = async (req, res, next) => {
     next(err);
   }
 };
+*/
 
 // Ready to export the controller functions
 module.exports = {
@@ -98,5 +100,7 @@ module.exports = {
   readCountry,
   updateCountry,
   addCountry,
+  /*
   deleteCountry,
+  */
 };

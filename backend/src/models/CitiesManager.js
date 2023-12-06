@@ -87,13 +87,13 @@ class CitiesManager extends AbstractManager {
   // TODO: Implement the delete operation to remove a city by its ID
 
   async delete(id) {
-    const [rows] = await this.database.query(
-      `DELETE FROM ${this.table} WHERE ${this.table}.id = ?`,
+    const result = await this.database.query(
+      `DELETE FROM ${this.table} WHERE id = ?`,
       [id]
     );
 
     // Return the first row of the result, which represents the city
-    return rows[0];
+    return result;
   }
 }
 

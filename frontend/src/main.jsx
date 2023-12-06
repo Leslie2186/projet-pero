@@ -4,7 +4,7 @@ import axios from "axios";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Cities from "./pages/cities/Cities";
 import OneCity from "./components/onecity/OneCity";
-import Addcity from "./pages/addcity/Addcity";
+import Modifcities from "./pages/modifcities/Modifcities";
 import Addcountry from "./pages/addcountry/Addcountry";
 
 import App from "./App";
@@ -34,8 +34,8 @@ const router = createBrowserRouter([
         },
       },
       {
-        path: "/Addcity",
-        element: <Addcity />,
+        path: "/Modifcities",
+        element: <Modifcities />,
       },
       {
         path: "/Addcountry",
