@@ -46,8 +46,7 @@ function Modifcities() {
     }
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  const handleSubmit = async () => {
     try {
       const response = await axios.post(
         `${import.meta.env.VITE_BACKEND_URL}/api/cities`,
@@ -70,8 +69,7 @@ function Modifcities() {
     }
   };
 
-  const putCity = async (event) => {
-    event.preventDefault();
+  const putCity = async () => {
     try {
       await axios.put(
         `${import.meta.env.VITE_BACKEND_URL}/api/cities/${cityValue.citiesId}`,
