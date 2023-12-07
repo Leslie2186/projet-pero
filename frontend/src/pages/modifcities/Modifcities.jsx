@@ -102,6 +102,7 @@ function Modifcities() {
       await axios.delete(
         `${import.meta.env.VITE_BACKEND_URL}/api/cities/${id}`
       );
+      window.location.reload();
     } catch (error) {
       console.error(error);
     }

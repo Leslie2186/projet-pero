@@ -63,6 +63,7 @@ function Modifcountry() {
       await axios.delete(
         `${import.meta.env.VITE_BACKEND_URL}/api/countries/${id}`
       );
+      window.location.reload();
     } catch (error) {
       console.error(error);
     }
