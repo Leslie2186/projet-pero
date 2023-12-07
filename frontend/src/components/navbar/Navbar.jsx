@@ -9,7 +9,7 @@ function Navbar() {
       <img src={globeTerrestre} alt="Globe terrestre" />
       <Link to="/">Accueil</Link>
       <Link to="/Modifcities">Dashboard des villes</Link>
-      <Link to="/Addcountry">Dashboard des pays</Link>
+      <Link to="/Modifcountries">Dashboard des pays</Link>
       <Link to="/Contact">Contact</Link>
     </nav>
   );

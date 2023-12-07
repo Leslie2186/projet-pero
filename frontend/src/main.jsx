@@ -5,8 +5,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Cities from "./pages/cities/Cities";
 import OneCity from "./components/onecity/OneCity";
 import Modifcities from "./pages/modifcities/Modifcities";
-import Addcountry from "./pages/addcountry/Addcountry";
-
+import Modifcountries from "./pages/modifcountries/Modifcountries";
 import App from "./App";
 
 const router = createBrowserRouter([
@@ -38,8 +37,8 @@ const router = createBrowserRouter([
         element: <Modifcities />,
       },
       {
-        path: "/Addcountry",
-        element: <Addcountry />,
+        path: "/Modifcountries",
+        element: <Modifcountries />,
       },
     ],
   },

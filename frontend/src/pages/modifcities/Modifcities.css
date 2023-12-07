@@ -2,6 +2,8 @@
   display: grid;
   grid-template-columns: 1fr;
   gap: 20px;
+  margin-left: 10px;
+  margin-right: 10px;
 }
 
 .formulairePostCity h1 {
@@ -12,6 +14,7 @@
 .containerTableCity {
   display: flex;
   justify-content: center;
+  margin-bottom: 30px;
 }
 
 .formCities {
@@ -33,16 +36,6 @@
   justify-content: center;
 }
 
-.buttonSubmit {
-  border-radius: 5px;
-  padding: 5px;
-  background-color: white;
-  color: lightseagreen;
-  font-weight: bold;
-  border: 2px solid lightseagreen;
-  margin-top: 20px;
-}
-
 .tableDashboard table,
 th,
 td {
@@ -57,7 +50,8 @@ td {
 }
 
 .buttonSuppression,
-.buttonModif {
+.buttonModif,
+.buttonSubmit {
   width: 100px;
   height: auto;
   font-size: 13px;

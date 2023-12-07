@@ -49,7 +49,7 @@ class CitiesManager extends AbstractManager {
   async readAll() {
     // Execute the SQL SELECT query to retrieve all cities from the "cities" table
     const [rows] = await this.database.query(
-      `SELECT cities.id AS citiesId, countries.id AS countriesId, countries_id, city, picture, country, flag FROM ${this.table} INNER JOIN countries ON ${this.table}.countries_id = countries.id`
+      `SELECT cities.id AS citiesId, countries.id AS countriesId, countries_id, city, picture, country, flag,  cash, sunshine, monuments0, monuments1, monuments2, monuments3, monuments4, monuments5, monuments6 FROM ${this.table} INNER JOIN countries ON ${this.table}.countries_id = countries.id`
     );
 
     // Return the array of cities
@@ -60,7 +60,7 @@ class CitiesManager extends AbstractManager {
   // TODO: Implement the update operation to modify an existing item
   async update(id, putCity) {
     // Execute the SQL SELECT query to retrieve a specific cities by its ID
-    const [rows] = await this.database.query(
+    const [result] = await this.database.query(
       `UPDATE ${this.table} set city = ?, countries_id = ?, cash = ?, picture = ?, sunshine = ?, monuments0 = ?, monuments1 = ?, monuments2 = ?, monuments3 = ?, monuments4 = ?, monuments5 = ?, monuments6 = ? WHERE id = ?`,
       [
         putCity.city,
@@ -80,7 +80,7 @@ class CitiesManager extends AbstractManager {
     );
 
     // Return the first row of the result, which represents the item
-    return rows[0];
+    return result.affectedRows;
   }
 
   // The D of CRUD - Delete operation
