@@ -1,0 +1,45 @@
+.containForm {
+  display: flex;
+  justify-content: center;
+}
+
+.contactCard h1 {
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+.contactCard form {
+  border: 2.5mm ridge lightseagreen;
+  border-radius: 10px;
+  box-shadow: -7px 10px 5px gray;
+  max-width: 400px;
+  background-color: white;
+  color: lightseagreen;
+  padding: 40px;
+  text-align: left;
+}
+
+.contactCard input {
+  margin-bottom: 15px;
+  margin-top: 10px;
+}
+
+.contactCard label span {
+  margin-right: 20px;
+  font-weight: bold;
+}
+
+.buttonsubmit {
+  width: 100px;
+  height: auto;
+  font-size: 13px;
+  font-weight: bold;
+  color: lightseagreen;
+  border: 2px solid lightseagreen;
+  border-radius: 5px;
+  padding: 4px;
+  margin-top: 45px;
+  margin-right: 15px;
+  background-color: white;
+  padding-left: 5px;
+}
