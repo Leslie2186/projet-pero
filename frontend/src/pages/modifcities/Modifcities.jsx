@@ -124,7 +124,7 @@ function Modifcities() {
   return (
     <div className="dashboard">
       <div className="formulairePostCity">
-        <h1>Ajouter une nouvelle ville</h1>
+        <h1>Ajouter, modifier ou supprimer une ville</h1>
         <div className="containerFormCity">
           <form onSubmit={handleRequest} className="formCities">
             <label>

@@ -42,9 +42,7 @@ router.put(
 // Route to delete a specific city by ID
 router.delete("/cities/:id", citiesControllers.deleteCity);
 // Route to delete a specific country by ID
-/*
 router.delete("/countries/:id", countriesControllers.deleteCountry);
-*/
 
 /* ************************************************************************* */
 
