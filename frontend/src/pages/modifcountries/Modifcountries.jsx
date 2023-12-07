@@ -29,8 +29,7 @@ function Modifcountry() {
     }));
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  const handleSubmit = async () => {
     try {
       // Envoi des données au backend en utilisant Axios
       const response = await axios.post(
@@ -73,8 +72,7 @@ function Modifcountry() {
     setCountryValue(countryToUpdate);
   };
 
-  const putCountry = async (event) => {
-    event.preventDefault();
+  const putCountry = async () => {
     try {
       await axios.put(
         `${import.meta.env.VITE_BACKEND_URL}/api/countries/${countryValue.id}`,
