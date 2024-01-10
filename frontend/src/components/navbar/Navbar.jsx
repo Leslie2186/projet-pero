@@ -6,11 +6,16 @@ import globeTerrestre from "../../assets/globeterretre.png";
 function Navbar() {
   return (
     <nav className="nav">
-      <img src={globeTerrestre} alt="Globe terrestre" />
-      <Link to="/">Accueil</Link>
-      <Link to="/Modifcities">Dashboard des villes</Link>
-      <Link to="/Modifcountries">Dashboard des pays</Link>
-      <Link to="/Contact">Contact</Link>
+      <div className="logo">
+        <img src={globeTerrestre} alt="Globe terrestre" />
+      </div>
+      <div className="menus">
+        <Link to="/">Accueil</Link>
+        <Link to="/Contact">Contact</Link>
+        <Link to="/LogIn">Log In</Link>
+        <Link to="/Modifcities">Dashboard des villes</Link>
+        <Link to="/Modifcountries">Dashboard des pays</Link>
+      </div>
     </nav>
   );
 }

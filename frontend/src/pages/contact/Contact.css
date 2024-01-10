@@ -6,40 +6,91 @@
 .contactCard h1 {
   margin-top: 50px;
   margin-bottom: 50px;
+  color: whitesmoke;
 }
 
 .contactCard form {
-  border: 2.5mm ridge lightseagreen;
-  border-radius: 10px;
-  box-shadow: -7px 10px 5px gray;
-  max-width: 400px;
-  background-color: white;
-  color: lightseagreen;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 8px;
+  backdrop-filter: blur(20px);
+  background-color: rgba(255, 255, 255, 0.5);
+  box-shadow: 0 1px 12px rgba(0, 0, 0, 0.25);
+  width: 300px;
   padding: 40px;
-  text-align: left;
+  text-align: center;
+}
+
+.contactCard input,
+.contactCard textarea {
+  margin-bottom: 15px;
+  margin-top: 10px;
+  color: black;
+  border: 2px solid transparent;
+  width: 15em;
+  height: 2.5em;
+  padding-left: 0.8em;
+  outline: none;
+  overflow: hidden;
+  background-color: #f3f3f3;
+  border-radius: 10px;
+  transition: all 0.5s;
+  font-family: monospace;
+  font-size: 15px;
+}
+
+input:hover,
+textarea:hover,
+input:focus,
+textarea:focus {
+  border: 2px solid #4a9dec;
+  box-shadow: 0px 0px 0px 7px rgb(74, 157, 236, 20%);
+  background-color: white;
 }
 
 .contactCard input {
-  margin-bottom: 15px;
-  margin-top: 10px;
+  width: 250px;
+  margin-right: 10px;
 }
 
-.contactCard label span {
-  margin-right: 20px;
-  font-weight: bold;
+.contactCard textarea {
+  padding: 10px;
+  width: 250px;
 }
 
-.buttonsubmit {
+.buttonSubmit {
   width: 100px;
   height: auto;
   font-size: 13px;
   font-weight: bold;
-  color: lightseagreen;
-  border: 2px solid lightseagreen;
+  color: #4a9dec;
+  border: 2px solid #4a9dec;
   border-radius: 5px;
-  padding: 4px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-right: 10px;
+  padding-left: 10px;
   margin-top: 45px;
   margin-right: 15px;
   background-color: white;
-  padding-left: 5px;
+}
+
+.buttonSubmit:hover {
+  transition: 0.3s ease-in-out;
+  color: white;
+  border: 2px solid #4a9dec;
+  background-color: #4a9dec;
+}
+
+@media screen and (min-width: 768px) {
+  .contactCard form {
+    width: 550px;
+  }
+
+  .contactCard input {
+    width: 500px;
+  }
+
+  .contactCard textarea {
+    width: 500px;
+  }
 }

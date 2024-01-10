@@ -65,51 +65,49 @@ function Contact() {
           <form onSubmit={handleSubmit} className="contactForm">
             <div>
               <InputForm
-                label="Nom de famille"
                 name="lastname"
                 type="text"
                 value={formValue.lastname}
                 onChange={handleChange}
+                required
+                placeholder="Nom"
               />
             </div>
             <div>
               <InputForm
-                label="Prénom"
                 name="firstname"
                 type="text"
                 value={formValue.firstname}
                 onChange={handleChange}
                 required
+                placeholder="Prénom"
               />
             </div>
             <div>
               <InputForm
-                label="Votre email"
                 name="email"
                 type="text"
                 value={formValue.email}
                 onChange={handleChange}
                 required
+                placeholder="Email"
               />
             </div>
             <div className="messageForm">
-              <label>
-                <span>Votre message</span>
-                <textarea
-                  className="textArea"
-                  name="message"
-                  value={formValue.message}
-                  onChange={handleChange}
-                  id="description"
-                  maxLength={400}
-                  required
-                />
-              </label>
-              <div className="submit">
-                <button type="submit" className="buttonsubmit">
-                  Envoyer
-                </button>
-              </div>
+              <textarea
+                className="textArea"
+                name="message"
+                value={formValue.message}
+                onChange={handleChange}
+                maxLength={400}
+                required
+                placeholder="Message"
+              />
+            </div>
+            <div className="containSubmit">
+              <button type="submit" className="buttonSubmit">
+                Envoyer
+              </button>
             </div>
           </form>
         </div>
