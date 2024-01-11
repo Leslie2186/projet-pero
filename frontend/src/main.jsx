@@ -7,6 +7,7 @@ import OneCity from "./components/onecity/OneCity";
 import Modifcities from "./pages/modifcities/Modifcities";
 import Modifcountries from "./pages/modifcountries/Modifcountries";
 import Contact from "./pages/contact/Contact";
+import LogIn from "./pages/login/LogIn";
 import App from "./App";
 
 const router = createBrowserRouter([
@@ -34,18 +35,16 @@ const router = createBrowserRouter([
         },
       },
       {
-        path: "/Modifcities",
-        element: <Modifcities />,
-      },
-      {
-        path: "/Modifcountries",
-        element: <Modifcountries />,
-      },
-      {
-        path: "/Contact",
+        path: "/contact",
         element: <Contact />,
       },
+      { path: "/login", element: <LogIn /> },
     ],
+  },
+  { path: "/dashboardVilles", element: <Modifcities /> },
+  {
+    path: "/dashboardPays",
+    element: <Modifcountries />,
   },
 ]);
 

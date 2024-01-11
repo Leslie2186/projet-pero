@@ -44,3 +44,11 @@ INSERT INTO cities(city,countries_id,cash,picture,sunshine,monuments0,monuments1
 INSERT INTO cities(city,countries_id,cash,picture,sunshine,monuments0,monuments1,monuments2,monuments3,monuments4,monuments5,monuments6) VALUES ('Messine',5,'€','https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/Messina-panorama_dal_Campanile.jpg/1280px-Messina-panorama_dal_Campanile.jpg',3379,'La Cathédrale de Messine','L''Horloge astronomique','La Chiesa di Santa Maria Alemanna','Le Campanile del Duomo di Messina','La Chiesa Santissima Annunziata dei Catalani','Le Musée régional','El Santuario Parrocchia S.Maria Di Montalto');
 INSERT INTO cities(city,countries_id,cash,picture,sunshine,monuments0,monuments1,monuments2,monuments3,monuments4,monuments5,monuments6) VALUES ('Taormine',5,'€','https://upload.wikimedia.org/wikipedia/commons/thumb/4/46/Mt_Etna_and_Taormina_as_seen_from_the_Ancient_Theatre_of_Taormina_%2822290641726%29.jpg/1920px-Mt_Etna_and_Taormina_as_seen_from_the_Ancient_Theatre_of_Taormina_%2822290641726%29.jpg',3383,'Le Théâtre de Taormina','La Chiesa Madonna della Rocca','El Duomo di Taormina','La Villa Comunale','La Chiesa di San Guiseppe','Le Palais Corvaja','Taormina Castle');
 INSERT INTO cities(city,countries_id,cash,picture,sunshine,monuments0,monuments1,monuments2,monuments3,monuments4,monuments5,monuments6) VALUES ('Zadar',6,'€','https://upload.wikimedia.org/wikipedia/commons/8/86/Zadar.jpg',2600,'L''église Saint-Donat','Le Roman Forum','La Cathédrale Sainte-Anastasie','Les Orgues Marin','Le Parc national de Krka','Le Musée Archéologique','Le Parc de la Reine Madijevka');
+
+CREATE TABLE users(
+   id       INTEGER  NOT NULL PRIMARY KEY AUTO_INCREMENT
+  ,email     VARCHAR(255) UNIQUE NOT NULL
+  ,password VARCHAR(255) NOT NULL
+);
+
+INSERT INTO users(email, password) VALUES('admin1@gmail.com', '$argon2id$v=19$m=65536,t=3,p=4$sIrJDpzLmmZ/A2wfLd4G8Q$PylOQ7gmi18LBnAbv1c0SNXuSsJU9dITZuLCFTtvGe0');
