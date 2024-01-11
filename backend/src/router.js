@@ -12,8 +12,10 @@ const itemControllers = require("./controllers/itemControllers");
 */
 const citiesControllers = require("./controllers/citiesControllers");
 const countriesControllers = require("./controllers/countriesControllers");
-const validateCities = require("./middlewares/validateCities");
-const validateCountries = require("./middlewares/validateCountries");
+const authControllers = require("./controllers/authControllers");
+const validateCities = require("./middlewaresValidation/validateCities");
+const validateCountries = require("./middlewaresValidation/validateCountries");
+const validateAuth = require("./middlewaresValidation/validateAuth");
 
 // Route to get a list of cities
 router.get("/cities", citiesControllers.browseCities);
@@ -29,6 +31,8 @@ router.get("/countries/:id", countriesControllers.readCountry);
 router.post("/cities", validateCities, citiesControllers.addCity);
 // Route to add a new country
 router.post("/countries", validateCountries, countriesControllers.addCountry);
+// Route to post a new auth
+router.post("/login", validateAuth, authControllers.log);
 
 // Route to update a city
 router.put("/cities/:id", validateCities, citiesControllers.updateCity);
