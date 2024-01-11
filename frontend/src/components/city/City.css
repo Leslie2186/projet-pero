@@ -30,22 +30,23 @@
 }
 
 .containCity {
-  border: 2.5mm ridge lightseagreen;
   border-radius: 10px;
-  box-shadow: -7px 10px 5px gray;
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(20px);
+  background-color: white;
+  box-shadow: 0 1px 12px rgba(0, 0, 0, 0.7);
   padding: 10px;
   margin-bottom: 30px;
   margin-right: 20px;
-  background-color: white;
   max-width: 400px;
 }
 
 .containAccrocheTab:hover {
-  animation: wiggle 2s linear infinite;
+  animation: wiggle 2s linear;
 }
 
 .containCity h2 {
-  color: lightseagreen;
+  color: #4a9dec;
 }
 
 .containCity img {
@@ -57,7 +58,7 @@
 
 .containCity a {
   text-decoration: none;
-  color: lightseagreen;
+  color: #4a9dec;
   font-weight: bold;
 }
 

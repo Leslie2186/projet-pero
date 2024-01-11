@@ -1,9 +1,8 @@
 .citiesList h1 {
   margin-bottom: 60px;
   margin-top: 50px;
-  color: lightseagreen;
+  color: white;
   text-transform: uppercase;
-  text-shadow: 2px 2px 5px whitesmoke;
 }
 
 .containCities {
