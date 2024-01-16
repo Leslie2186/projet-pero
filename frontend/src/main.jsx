@@ -41,9 +41,9 @@ const router = createBrowserRouter([
       { path: "/login", element: <LogIn /> },
     ],
   },
-  { path: "/dashboardVilles", element: <Modifcities /> },
+  { path: "/dashboard", element: <Modifcities /> },
   {
-    path: "/dashboardPays",
+    path: "/gestionPays",
     element: <Modifcountries />,
   },
 ]);

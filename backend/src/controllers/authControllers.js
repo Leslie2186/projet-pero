@@ -12,7 +12,7 @@ const log = async (req, res, next) => {
       );
 
       if (passwordMatch) {
-        res.status(201).json({ id: login.id, msg: "Connected" });
+        res.status(200).json({ id: login.id, email: login.email });
       } else {
         res.sendStatus(403);
       }

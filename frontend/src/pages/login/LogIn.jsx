@@ -1,7 +1,7 @@
-import { React, useState } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { ToastContainer, toast } from "react-toastify";
 import axios from "axios";
+import { ToastContainer, toast } from "react-toastify";
 import InputLogin from "../../components/inputlogin/InputLogin";
 import "react-toastify/dist/ReactToastify.css";
 import "./LogIn.css";
@@ -28,6 +28,7 @@ const showToastErrorMessage = () => {
 
 function LogIn() {
   const [credentials, setCredentials] = useState(user);
+  // const setConnected = useContext(AuthContext);
   const navigate = useNavigate();
 
   const handleChange = (event) => {
@@ -40,18 +41,14 @@ function LogIn() {
   const handleRequest = async (e) => {
     e.preventDefault();
     try {
-      const valid = await axios.post(
+      await axios.post(
         `${import.meta.env.VITE_BACKEND_URL}/api/login`,
         credentials
       );
-      if (valid) {
-        showToastMessage();
-        setTimeout(() => {
-          navigate("/dashboardVilles");
-        }, 3000);
-      } else {
-        showToastErrorMessage();
-      }
+      showToastMessage();
+      setTimeout(() => {
+        navigate("/dashboard");
+      }, 3000);
     } catch (error) {
       showToastErrorMessage(error);
       setCredentials(user);
