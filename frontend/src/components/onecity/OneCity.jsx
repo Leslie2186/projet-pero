@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useLoaderData } from "react-router-dom";
 import "./OneCity.css";
 import soleil from "../../assets/soleil.png";
@@ -24,6 +24,10 @@ function OneCity() {
   } else if (city.flag === "ES") {
     pays = espagne;
   }
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
     <div className="containerOneCity">

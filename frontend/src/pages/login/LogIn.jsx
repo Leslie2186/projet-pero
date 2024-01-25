@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
+import connexion from "../../services/connexion";
 import InputLogin from "../../components/inputlogin/InputLogin";
 import "react-toastify/dist/ReactToastify.css";
 import "./LogIn.css";
@@ -41,10 +41,7 @@ function LogIn() {
   const handleRequest = async (e) => {
     e.preventDefault();
     try {
-      await axios.post(
-        `${import.meta.env.VITE_BACKEND_URL}/api/login`,
-        credentials
-      );
+      await connexion.post(`/login`, credentials);
       showToastMessage();
       setTimeout(() => {
         navigate("/dashboard");

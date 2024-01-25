@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import axios from "axios";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import connexion from "./services/connexion";
 import Cities from "./pages/cities/Cities";
 import OneCity from "./components/onecity/OneCity";
 import Modifcities from "./pages/modifcities/Modifcities";
@@ -18,8 +18,8 @@ const router = createBrowserRouter([
         path: "/",
         element: <Cities />,
         loader: () => {
-          return axios
-            .get(`${import.meta.env.VITE_BACKEND_URL}/api/cities`)
+          return connexion
+            .get(`/cities`)
             .then((response) => response.data)
             .catch((err) => console.error(err));
         },
@@ -28,8 +28,8 @@ const router = createBrowserRouter([
         path: "/cities/:id",
         element: <OneCity />,
         loader: ({ params }) => {
-          return axios
-            .get(`${import.meta.env.VITE_BACKEND_URL}/api/cities/${params.id}`)
+          return connexion
+            .get(`/cities/${params.id}`)
             .then((response) => response.data)
             .catch((err) => console.error(err));
         },
@@ -38,8 +38,11 @@ const router = createBrowserRouter([
         path: "/contact",
         element: <Contact />,
       },
-      { path: "/login", element: <LogIn /> },
     ],
+  },
+  {
+    path: "/login",
+    element: <LogIn />,
   },
   { path: "/dashboard", element: <Modifcities /> },
   {

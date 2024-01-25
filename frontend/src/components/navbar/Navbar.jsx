@@ -12,9 +12,6 @@ function Navbar() {
       <div className="menus">
         <Link to="/">Accueil</Link>
         <Link to="/Contact">Contact</Link>
-        <Link to="/LogIn">Log In</Link>
-        <Link to="/Modifcities">Dashboard des villes</Link>
-        <Link to="/Modifcountries">Dashboard des pays</Link>
       </div>
     </nav>
   );

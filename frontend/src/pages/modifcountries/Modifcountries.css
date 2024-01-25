@@ -19,30 +19,48 @@
   margin-bottom: 40px;
 }
 
-.containSubmit {
+.containSubmitCountry {
   display: flex;
   justify-content: center;
 }
 
 .formCountries label {
-  margin-bottom: 10px;
+  margin-top: 10px;
+  margin-bottom: 15px;
+  text-align: right;
+  margin-right: 40px;
 }
 
-.buttonSuppression,
-.buttonModif,
-.buttonSubmit {
+.buttonSubmitCountry {
+  margin-top: 20px;
+}
+
+.buttonSuppressionCountry,
+.buttonSubmitCountry {
   width: 100px;
   height: auto;
   font-size: 13px;
   font-weight: bold;
-  color: lightseagreen;
-  border: 2px solid lightseagreen;
+  color: #4a9dec;
+  border: 2px solid #4a9dec;
   border-radius: 5px;
-  padding: 4px;
-  margin-top: 15px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-right: 10px;
+  padding-left: 10px;
+  margin-bottom: 5px;
   margin-right: 15px;
   background-color: white;
-  padding-left: 5px;
-  margin-left: 15px;
-  margin-bottom: 10px;
+}
+
+.buttonSuppressionCountry:hover,
+.buttonSubmitCountry:hover {
+  transition: 0.3s ease-in-out;
+  color: white;
+  border: 2px solid #4a9dec;
+  background-color: #4a9dec;
+}
+
+tbody {
+  text-align: center;
 }
