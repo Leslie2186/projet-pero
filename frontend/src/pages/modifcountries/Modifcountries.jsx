@@ -1,5 +1,6 @@
 import { React, useEffect, useState } from "react";
-import axios from "axios";
+import connexion from "../../services/connexion";
+import NavbarDashboard from "../../components/navbardashboard/NavbarDashboard";
 import "./Modifcountries.css";
 
 function Modifcountry() {
@@ -12,8 +13,8 @@ function Modifcountry() {
 
   const getCountries = async () => {
     try {
-      const myCountries = await axios
-        .get(`${import.meta.env.VITE_BACKEND_URL}/api/countries`)
+      const myCountries = await connexion
+        .get(`/countries`)
         .then((res) => res.data);
       setCountries(myCountries);
     } catch (error) {
@@ -32,10 +33,7 @@ function Modifcountry() {
   const handleSubmit = async () => {
     try {
       // Envoi des données au backend en utilisant Axios
-      const response = await axios.post(
-        `${import.meta.env.VITE_BACKEND_URL}/api/countries`,
-        countryValue
-      );
+      const response = await connexion.post(`/countries`, countryValue);
 
       if (response.status === 201) {
         console.info("Données enregistrées avec succès !");
@@ -60,9 +58,7 @@ function Modifcountry() {
 
   const deleteCountry = async (id) => {
     try {
-      await axios.delete(
-        `${import.meta.env.VITE_BACKEND_URL}/api/countries/${id}`
-      );
+      await connexion.delete(`/countries/${id}`);
       window.location.reload();
     } catch (error) {
       console.error(error);
@@ -75,10 +71,7 @@ function Modifcountry() {
 
   const putCountry = async () => {
     try {
-      await axios.put(
-        `${import.meta.env.VITE_BACKEND_URL}/api/countries/${countryValue.id}`,
-        countryValue
-      );
+      await connexion.put(`/countries/${countryValue.id}`, countryValue);
       getCountries();
     } catch (error) {
       console.error(error);
@@ -95,90 +88,93 @@ function Modifcountry() {
 
   return (
     <div className="dashboard">
-      <div className="formulairePostCountry">
-        <h1>Ajouter, modifier ou supprimer un pays</h1>
-        <div className="containerFormCountry">
-          <form onSubmit={handleRequest} className="formCountries">
-            <label>
-              Nouveau pays visité :{" "}
-              <input
-                type="text"
-                name="country"
-                value={countryValue.country}
-                onChange={handleChange}
-                required
-              />
-            </label>
-            <label>
-              Le drapeau du pays :{" "}
-              <input
-                type="text"
-                name="flag"
-                value={countryValue.flag}
-                onChange={handleChange}
-                required
-              />
-            </label>
-            <label>
-              La langue du pays :{" "}
-              <input
-                type="text"
-                name="language"
-                value={countryValue.language}
-                onChange={handleChange}
-                required
-              />
-            </label>
-            <div className="containSubmit">
-              <button type="submit" className="buttonSubmit">
-                {countryValue.id ? "Modifier" : "Ajouter"}
-              </button>
-            </div>
-          </form>
+      <NavbarDashboard />
+      <div className="formulaireTabgestion">
+        <div className="formulairePostCountry">
+          <h1>Ajouter, modifier ou supprimer un pays</h1>
+          <div className="containerFormCountry">
+            <form onSubmit={handleRequest} className="formCountries">
+              <label>
+                Nouveau pays visité :{" "}
+                <input
+                  type="text"
+                  name="country"
+                  value={countryValue.country}
+                  onChange={handleChange}
+                  required
+                />
+              </label>
+              <label>
+                Le drapeau du pays :{" "}
+                <input
+                  type="text"
+                  name="flag"
+                  value={countryValue.flag}
+                  onChange={handleChange}
+                  required
+                />
+              </label>
+              <label>
+                La langue du pays :{" "}
+                <input
+                  type="text"
+                  name="language"
+                  value={countryValue.language}
+                  onChange={handleChange}
+                  required
+                />
+              </label>
+              <div className="containSubmitCountry">
+                <button type="submit" className="buttonSubmitCountry">
+                  {countryValue.id ? "Modifier" : "Ajouter"}
+                </button>
+              </div>
+            </form>
+          </div>
         </div>
-      </div>
-      <div className="containerTableCity">
-        <div className="tableDashboard">
-          <table>
-            <thead>
-              <tr>
-                <th>id</th>
-                <th>country</th>
-                <th>flag</th>
-                <th>language</th>
-              </tr>
-            </thead>
-            <tbody>
-              {countries.map((country) => {
-                return (
-                  <tr key={country.id}>
-                    <td>{country.id}</td>
-                    <td>{country.country}</td>
-                    <td>{country.flag}</td>
-                    <td>{country.language}</td>
-                    <td>
-                      <button
-                        type="button"
-                        onClick={() => deleteCountry(country.id)}
-                        className="buttonSuppression"
-                      >
-                        Supprimer
-                      </button>
-                    </td>
-                    <td>
-                      <button
-                        type="button"
-                        onClick={() => loadCountry(country)}
-                        className="buttonModif"
-                      >
-                        Modifier
-                      </button>
-                    </td>
-                  </tr>
-                );
-              })}
-            </tbody>
-          </table>
+        <div className="containerTableCity">
+          <div className="tableDashboard">
+            <table>
+              <thead>
+                <tr>
+                  <th>Id</th>
+                  <th>Pays</th>
+                  <th>Drapeau</th>
+                  <th>Supprimer</th>
+                  <th>Modifier</th>
+                </tr>
+              </thead>
+              <tbody>
+                {countries.map((country) => {
+                  return (
+                    <tr key={country.id}>
+                      <td>{country.id}</td>
+                      <td>{country.country}</td>
+                      <td>{country.flag}</td>
+                      <td>
+                        <button
+                          type="button"
+                          onClick={() => deleteCountry(country.id)}
+                          className="buttonSuppressionCountry"
+                        >
+                          Supprimer
+                        </button>
+                      </td>
+                      <td>
+                        <button
+                          type="button"
+                          onClick={() => loadCountry(country)}
+                          className="buttonModif"
+                        >
+                          Modifier
+                        </button>
+                      </td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
     </div>

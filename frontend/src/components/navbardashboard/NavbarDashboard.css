@@ -1,0 +1,44 @@
+.navDashboard {
+  background-color: #1670c4;
+}
+
+.navDashboard img {
+  display: grid;
+  grid-template-columns: 100px, 300px;
+}
+
+.logo-dashbord {
+  margin-top: 20px;
+  margin-bottom: 40px;
+  margin-left: 20px;
+}
+
+.logo-dashbord img {
+  height: auto;
+  width: 105px;
+}
+
+.menus-dashboard {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.iconVilles,
+.iconPays {
+  margin-top: 100px;
+  margin-bottom: 100px;
+  margin-left: 20px;
+}
+
+.iconVilles img {
+  height: auto;
+  width: 75px;
+  margin-left: 15px;
+}
+
+.iconPays img {
+  width: 80px;
+  height: auto;
+  margin-left: 10px;
+}
