@@ -64,10 +64,10 @@
 
 @media screen and (max-width: 500px) {
   .containCity {
-    max-width: 300px;
+    max-width: 330px;
   }
 
   .containCity img {
-    max-width: 300px;
+    max-width: 330px;
   }
 }
