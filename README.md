@@ -1,3 +1,15 @@
+## Voyages en mémoire
+
+Bienvenue dans mon carnet de voyage, un témoignage de mes souvenirs à travers les villes captivantes que j'ai eu le privilège de visiter. Images, informations utiles, visites à ne pas rater, rejoignez-moi dans cette aventure et que chaque destination inspire votre prochaine escapade et vous rappelle les merveilles qui attendent ceux qui osent explorer le monde!
+
+Ce site vise à capturer l'essence même des voyages que j'ai pu réaliser : l'exploration, la découverte et le partage d'informations et de souvenirs inoubliables. Que chaque clic soit une invitation à découvrir ces lieux magiques et à planifier pour vous de nouvelles aventures.
+
+
+Langages et outils utilisés : HTML5, CSS3, JavaScript, React, Express.Js, Node.js, MySQL, Git, GitHub
+------------------------------------------------------------------------------------------------------------------------
+
+
+
 ## Concept
 
 This template is meant to serve as a foundation for every P2/P3 following the React-Express-MySQL stack, as learned in Wild Code School.
