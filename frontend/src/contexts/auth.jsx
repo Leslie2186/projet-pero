@@ -4,9 +4,12 @@ import PropTypes from "prop-types";
 export const AuthContext = createContext();
 
 function AuthProvider({ children }) {
-  const [connected, setConnected] = useState({ id: 0, email: "" });
+  const [connected, setConnected] = useState({ email: null });
   const contextValue = useMemo(
-    () => ({ connected, setConnected }),
+    () => ({
+      connected,
+      setConnected,
+    }),
     [connected, setConnected]
   );
 

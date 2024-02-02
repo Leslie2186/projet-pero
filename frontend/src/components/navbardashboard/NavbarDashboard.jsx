@@ -14,12 +14,12 @@ function NavbarDashboard() {
       </div>
       <div className="menus-dashboard">
         <div className="iconVilles">
-          <Link to="/dashboard">
+          <Link to="/dashboard/gestionCities">
             <img src={villes} alt="Icon de villes" />
           </Link>
         </div>
         <div className="iconPays">
-          <Link to="/gestionPays">
+          <Link to="/dashboard/gestionPays">
             <img src={pays} alt="Icon de pays" />
           </Link>
         </div>

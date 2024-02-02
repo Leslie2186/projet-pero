@@ -2,6 +2,8 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import connexion from "./services/connexion";
+import Authprovider from "./contexts/auth";
+import Dashboard from "./pages/dashboard/Dashboard";
 import Cities from "./pages/cities/Cities";
 import OneCity from "./components/onecity/OneCity";
 import Modifcities from "./pages/modifcities/Modifcities";
@@ -44,10 +46,19 @@ const router = createBrowserRouter([
     path: "/login",
     element: <LogIn />,
   },
-  { path: "/dashboard", element: <Modifcities /> },
   {
-    path: "/gestionPays",
-    element: <Modifcountries />,
+    path: "/dashboard",
+    element: <Dashboard />,
+    children: [
+      {
+        path: "gestionCities",
+        element: <Modifcities />,
+      },
+      {
+        path: "gestionPays",
+        element: <Modifcountries />,
+      },
+    ],
   },
 ]);
 
@@ -55,6 +66,8 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 
 root.render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <Authprovider>
+      <RouterProvider router={router} />
+    </Authprovider>
   </React.StrictMode>
 );

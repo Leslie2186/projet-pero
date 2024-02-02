@@ -44,7 +44,8 @@ function Modifcities() {
     }
   };
 
-  const handleSubmit = async () => {
+  const handleSubmit = async (e) => {
+    e.preventDefault();
     try {
       const response = await connexion.post(`/cities`, cityValue);
 
@@ -64,7 +65,8 @@ function Modifcities() {
     }
   };
 
-  const putCity = async () => {
+  const putCity = async (e) => {
+    e.preventDefault();
     try {
       await connexion.put(`/cities/${cityValue.citiesId}`, cityValue);
       getCities();
@@ -87,12 +89,11 @@ function Modifcities() {
   useEffect(() => {
     getCountries();
     getCities();
-  }, []);
+  }, [cities]);
 
   const deleteCity = async (id) => {
     try {
       await connexion.delete(`/cities/${id}`);
-      window.location.reload();
     } catch (error) {
       console.error(error);
     }
