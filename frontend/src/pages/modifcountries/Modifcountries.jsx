@@ -30,7 +30,8 @@ function Modifcountry() {
     }));
   };
 
-  const handleSubmit = async () => {
+  const handleSubmit = async (e) => {
+    e.preventDefault();
     try {
       // Envoi des données au backend en utilisant Axios
       const response = await connexion.post(`/countries`, countryValue);
@@ -54,12 +55,11 @@ function Modifcountry() {
 
   useEffect(() => {
     getCountries();
-  }, []);
+  }, [countries]);
 
   const deleteCountry = async (id) => {
     try {
       await connexion.delete(`/countries/${id}`);
-      window.location.reload();
     } catch (error) {
       console.error(error);
     }
@@ -69,7 +69,8 @@ function Modifcountry() {
     setCountryValue(countryToUpdate);
   };
 
-  const putCountry = async () => {
+  const putCountry = async (e) => {
+    e.preventDefault();
     try {
       await connexion.put(`/countries/${countryValue.id}`, countryValue);
       getCountries();

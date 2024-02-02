@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
+import { AuthContext } from "../../contexts/auth";
 import connexion from "../../services/connexion";
 import InputLogin from "../../components/inputlogin/InputLogin";
 import "react-toastify/dist/ReactToastify.css";
@@ -28,7 +29,7 @@ const showToastErrorMessage = () => {
 
 function LogIn() {
   const [credentials, setCredentials] = useState(user);
-  // const setConnected = useContext(AuthContext);
+  const { setConnected } = useContext(AuthContext);
   const navigate = useNavigate();
 
   const handleChange = (event) => {
@@ -41,11 +42,20 @@ function LogIn() {
   const handleRequest = async (e) => {
     e.preventDefault();
     try {
-      await connexion.post(`/login`, credentials);
+      const valid = await connexion.post(`/login`, credentials);
+
+      setConnected(valid.data);
       showToastMessage();
-      setTimeout(() => {
-        navigate("/dashboard");
-      }, 3000);
+
+      if (valid.data.email) {
+        setTimeout(() => {
+          navigate("/dashboard/gestionCities");
+        }, 3000);
+      } else {
+        setTimeout(() => {
+          navigate("/");
+        }, 1000);
+      }
     } catch (error) {
       showToastErrorMessage(error);
       setCredentials(user);
